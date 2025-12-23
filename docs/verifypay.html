@@ -55,6 +55,25 @@
             font-weight: bold;
             color: #000;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* espaço entre texto e loading */
+        }
+
+        /* LOADING CIRCLE */
+        .loading-circle {
+            border: 6px solid #f3f3f3; /* cor de fundo do círculo */
+            border-top: 6px solid #3498db; /* cor giratória */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -62,15 +81,34 @@
 
     <!-- MARCA D'ÁGUA -->
     <div class="watermark-bg">
-        <img src="WhatsApp Image 2025-12-22 at 19.00.03.jpeg" alt="Viva Assessoria">
+        <img src="marcadagua.jpeg" alt="Viva Assessoria">
         <span>Viva Assessoria Ltda.</span>
     </div>
 
     <!-- MENSAGEM DE PAGAMENTO -->
     <div class="payment-confirmed">
-        PAGAMENTO CONFIRMADO!<br>
-        A Viva Assessoria Ltda. agradece pela preferência!<br>🙏
+        Verificando pagamento. Aguarde!
+        <!-- LOADING -->
+        <div class="loading-circle"></div>
     </div>
+
+        <script>
+
+        /* ----------------------------
+           TEMPORIZADOR PARA REDIRECIONAR
+           ---------------------------- */
+
+        // 🔹 Defina o tempo em segundos:
+        const tempoSegundos = 3; // coloque o tempo que quiser aqui
+
+        // 🔹 Defina o link de destino:
+        const linkDestino = "confirmpay.html"; // coloque o link aqui
+
+        setTimeout(() => {
+            window.location.href = linkDestino;
+        }, tempoSegundos * 1000);
+    </script>
+    
 
 </body>
 </html>

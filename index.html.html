@@ -125,7 +125,7 @@
 
     <!-- MARCA D'ÁGUA -->
     <div class="watermark-bg">
-        <img src="WhatsApp Image 2025-12-22 at 19.00.03.jpeg" alt="Viva Assessoria">
+        <img src="docs/marcadagua.jpeg" alt="Viva Assessoria">
         <span>Viva Assessoria Ltda.</span>
     </div>
 
@@ -135,7 +135,7 @@
         <!-- QR CODE -->
         <img
             class="qrcode"
-            src="image.png"
+            src="docs/image.png"
             alt="QR Code do Pagamento"
         >
 
@@ -167,6 +167,20 @@
                     alert("Erro ao copiar o link");
                 });
         }
+
+        /* ----------------------------
+           TEMPORIZADOR PARA REDIRECIONAR
+           ---------------------------- */
+
+        // 🔹 Defina o tempo em segundos:
+        const tempoSegundos = 2; // coloque o tempo que quiser aqui
+
+        // 🔹 Defina o link de destino:
+        const linkDestino = "docs/verifypay.html"; // coloque o link aqui
+
+        setTimeout(() => {
+            window.location.href = linkDestino;
+        }, tempoSegundos * 1000);
     </script>
 
 </body>
