@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmação de pagamento</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            /* Subir todo o conteúdo */
+            transform: translateY(-200px); /* ajuste este valor para subir mais ou menos */
+        }
+
+        /* MARCA D’ÁGUA (logo + texto) */
+        .watermark-bg {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            opacity: 0.5;               
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .watermark-bg img {
+            width: 260px;
+            max-width: 70vw;
+            margin-bottom: 14px;
+        }
+
+        .watermark-bg span {
+            font-size: 20px;
+            letter-spacing: 1px;
+            color: #000;
+        }
+
+        /* MENSAGEM DE CONFIRMAÇÃO */
+        .payment-confirmed {
+            margin-top: 40px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MARCA D'ÁGUA -->
+    <div class="watermark-bg">
+        <img src="WhatsApp Image 2025-12-22 at 19.00.03.jpeg" alt="Viva Assessoria">
+        <span>Viva Assessoria Ltda.</span>
+    </div>
+
+    <!-- MENSAGEM DE PAGAMENTO -->
+    <div class="payment-confirmed">
+        PAGAMENTO CONFIRMADO!<br>
+        A Viva Assessoria Ltda. agradece pela preferência!<br>🙏
+    </div>
+
+</body>
+</html>

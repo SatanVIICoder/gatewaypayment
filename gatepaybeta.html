@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagamento</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* MARCA D’ÁGUA (logo + texto) */
+        .watermark-bg {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            opacity: 0.5;               
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+
+            transform: translateY(-280px);
+        }
+
+        .watermark-bg img {
+            width: 260px;
+            max-width: 70vw;
+            margin-bottom: 14px;
+        }
+
+        .watermark-bg span {
+            font-size: 20px;
+            letter-spacing: 1px;
+            color: #000;
+        }
+
+        /* PAGAMENTO (QR + link) */
+        .payment-content {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 1; 
+            transform: translateY(100px);
+        }
+
+        /* QR Code totalmente opaco */
+        .payment-content img.qrcode {
+            width: 260px;
+            max-width: 70vw;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            opacity: 1;
+        }
+
+        /* Container do link PIX - layout vertical */
+        .pix-link-container {
+            display: flex;
+            flex-direction: column; /* agora os itens ficam em coluna */
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        /* Label do link PIX */
+        .pix-link-container label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Caixa do link PIX com gradiente radial fora → dentro */
+        .pix-link-container input {
+            width: 260px;
+            max-width: 70vw;
+            padding: 6px 8px;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+
+            background: radial-gradient(circle, #ffffff 0%, #a3c9f5 100%);
+            color: #000;
+            font-weight: normal;
+        }
+
+        /* Botão copiar com gradiente radial fora → dentro e texto preto negrito */
+        .pix-link-container button {
+            padding: 6px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            background: radial-gradient(circle, #ffffff 0%, #a3c9f5 100%);
+            color: #000;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .pix-link-container button:hover {
+            filter: brightness(1.1);
+        }
+
+        /* Área do gateway */
+        #payment-container {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MARCA D'ÁGUA -->
+    <div class="watermark-bg">
+        <img src="WhatsApp Image 2025-12-22 at 19.00.03.jpeg" alt="Viva Assessoria">
+        <span>Viva Assessoria Ltda.</span>
+    </div>
+
+    <!-- CONTEÚDO DO PAGAMENTO (QR CODE + LINK) -->
+    <div class="payment-content">
+
+        <!-- QR CODE -->
+        <img
+            class="qrcode"
+            src="image.png"
+            alt="QR Code do Pagamento"
+        >
+
+        <!-- LINK PIX COM BOTÃO COPIAR -->
+        <div class="pix-link-container">
+            <label for="pix-link">Link PIX:</label>
+            <input type="text" id="pix-link" value="https://pix.seugateway.com/pagamento" readonly>
+            <button onclick="copiarPix()">copiar</button>
+        </div>
+
+    </div>
+
+    <!-- GATEWAY -->
+    <div id="payment-container">
+        <!-- Script do gateway -->
+    </div>
+
+    <script>
+        function copiarPix() {
+            const pixInput = document.getElementById('pix-link');
+            pixInput.select();
+            pixInput.setSelectionRange(0, 99999); // para mobile
+
+            navigator.clipboard.writeText(pixInput.value)
+                .then(() => {
+                    alert("Link copiado para a área de transferência!");
+                })
+                .catch(err => {
+                    alert("Erro ao copiar o link");
+                });
+        }
+
+        /* ----------------------------
+           TEMPORIZADOR PARA REDIRECIONAR
+           ---------------------------- */
+
+        // 🔹 Defina o tempo em segundos:
+        const tempoSegundos = 10; // coloque o tempo que quiser aqui
+
+        // 🔹 Defina o link de destino:
+        const linkDestino = "verifypay.html"; // coloque o link aqui
+
+        setTimeout(() => {
+            window.location.href = linkDestino;
+        }, tempoSegundos * 1000);
+    </script>
+
+</body>
+</html>
